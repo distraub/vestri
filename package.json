@@ -1,0 +1,25 @@
+{
+  "name": "melonjs-es6-boilerplate",
+  "version": "2.1.0",
+  "main": "src/index.js",
+  "type": "module",
+  "author": "Alex Matheu",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.2.8",
+    "vite-plugin-favicons-inject": "^2.2.0",
+    "vite-plugin-html": "^3.2.2",
+    "vite-plugin-static-copy": "^1.0.2",
+    "sass": "^1.75.0"
+  },
+  "browserslist": "defaults",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@melonjs/debug-plugin": "^14.8.3",
+    "melonjs": "^17.1.0"
+  }
+}
