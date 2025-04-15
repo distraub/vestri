@@ -25,7 +25,7 @@ class TitleScreen extends Stage {
         size: 1.0,
         textBaseline: 'middle',
         textAlign: 'center',
-        text: 'Press SPACE To Start'
+        text: 'Press Space To Start'
       }),
       1
     )
