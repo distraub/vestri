@@ -1,19 +1,39 @@
-import { Stage, game, ColorLayer, BitmapText, input, state } from 'melonjs'
+import { Stage, game, ColorLayer, BitmapText, input, state, save } from 'melonjs'
+import gameData from '../gameData.js'
 
-class TitleScreen extends Stage {
+class ScoreScreen extends Stage {
   onResetEvent () {
     // Add a background layer at the lowest layer index.
     game.world.addChild(new ColorLayer('background', '#101020'), 0)
-    game.score = 0
+
+    gameData.startRound = false
+
+    let chestMessage = 'Sorry try again'
+    let bonusText = ''
+
+    if (gameData.foundLuckyChest) {
+        const scoreAdd = gameData.chests * 100
+        gameData.score += scoreAdd
+        chestMessage = 'You found the lucky chest!'
+        bonusText = `You got ${scoreAdd} points`
+        if (gameData.chests < 11) {
+            gameData.chests++
+        }
+        gameData.foundLuckyChest = false
+    } else {
+        if (gameData.chests > 2) {
+            gameData.chests--
+        }
+    }
 
     // Add title text (centered).
     game.world.addChild(
       new BitmapText(game.viewport.width / 2, game.viewport.height / 2 - 20, {
         font: 'PressStart2P',
-        size: 3.0,
+        size: 2.0,
         textBaseline: 'middle',
         textAlign: 'center',
-        text: 'Vistri'
+        text: chestMessage
       }),
       1
     )
@@ -25,11 +45,24 @@ class TitleScreen extends Stage {
         size: 1.0,
         textBaseline: 'middle',
         textAlign: 'center',
-        text: 'Press SPACE To Start'
+        text: bonusText
       }),
       1
     )
 
+    // Add prompt text.
+    game.world.addChild(
+        new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + 80, {
+          font: 'PressStart2P',
+          size: 0.8,
+          textBaseline: 'middle',
+          textAlign: 'center',
+          text: 'Press Space to continue'
+        }),
+        1
+      )
+
+    
     // Bind the A key to a custom action "startGame".
     input.bindKey(input.KEY.SPACE, 'startGame', true)
   }
@@ -49,4 +82,4 @@ class TitleScreen extends Stage {
   }
 }
 
-export default TitleScreen
+export default ScoreScreen
