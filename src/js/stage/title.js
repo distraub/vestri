@@ -13,7 +13,7 @@ class TitleScreen extends Stage {
         size: 3.0,
         textBaseline: 'middle',
         textAlign: 'center',
-        text: 'Vistri'
+        text: 'Vestri'
       }),
       1
     )
