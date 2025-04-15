@@ -65,6 +65,7 @@ class ScoreScreen extends Stage {
     
     // Bind the A key to a custom action "startGame".
     input.bindKey(input.KEY.SPACE, 'startGame', true)
+    input.bindGamepad(0, {type:"buttons", code: input.GAMEPAD.BUTTONS.START}, input.KEY.SPACE)
   }
 
   update (dt) {
