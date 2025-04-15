@@ -1,14 +1,16 @@
-import { Entity, collision, game, event } from 'melonjs'
+import { Sprite, collision, game, event, Body, Rect, Color } from 'melonjs'
 
-export default class PlayerEntity extends Entity {
+export default class PlayerEntity extends Sprite {
   constructor (x, y, settings = {}) {
     settings.width = settings.width || 50
     settings.height = settings.height || 50
+    settings.image = 'player'
     super(x, y, settings)
     this.width = settings.width * 2
     this.height = settings.height * 2
+    // settings.anchorPoint = new Vector2d(0.5, 0.5)
     // Set a speed value (pixels per frame, adjust as needed)
-    this.speed = 4
+    this.speed = 8
     // Create flags for movement
     this.moving = {
       left: false,
@@ -21,8 +23,14 @@ export default class PlayerEntity extends Entity {
     this.onKeyUp = this.onKeyUp.bind(this)
     event.on(event.KEYDOWN, this.onKeyDown)
     event.on(event.KEYUP, this.onKeyUp)
+
+    this.body = new Body(this)
+    this.body.addShape(new Rect(0, 0, this.width, this.height));
+    this.body.ignoreGravity = true;
     this.body.collisionType = collision.types.PLAYER_OBJECT
-    this.anchorPoint.set(0.5, 0.5)
+    const playerColor = new Color()
+    playerColor.parseHex('#02c1f9')
+    this.tint.setColor(playerColor.r, playerColor.g, playerColor.b)
   }
 
   onKeyDown (action, keyCode, edge) {
@@ -74,37 +82,37 @@ export default class PlayerEntity extends Entity {
       dy += this.speed
     }
     
-    if (this.pos.x > 0 && this.pos.x < (game.world.width / 2) - 15) {
+    if (this.pos.x > 0 && this.pos.x < game.world.width - this.width) {
         this.pos.x += dx
     } else {
-        if (this.pos.x < (game.world.width / 2) - 15) {
+        if (this.pos.x < game.world.width - 15) {
             this.pos.x = this.pos.x + 1
         } else {
-            this.pos.x = (game.world.width / 2) - 16
+            this.pos.x = game.world.width - 16
         }
     }
 
-    if (this.pos.y > 0 && this.pos.y < (game.world.height / 2) - 15) {
+    if (this.pos.y > 0 && this.pos.y < game.world.height - 15) {
         this.pos.y += dy
     } else {
-        if (this.pos.y < (game.world.height / 2) - 15) {
+        if (this.pos.y < game.world.height - 15) {
             this.pos.y = this.pos.y + 1
         } else {
-            this.pos.y = (game.world.height / 2) - 16
+            this.pos.y = game.world.height - 16
         }
     }
     
     return true
   }
 
-  draw (renderer) {
-    const ctx = renderer.getContext()
-    if (ctx) {
-      ctx.fillStyle = '#02c1f9'
-      ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height)
-    }
-    return true
-  }
+//   draw (renderer) {
+//     const ctx = renderer.getContext()
+//     if (ctx) {
+//       ctx.fillStyle = '#02c1f9'
+//       ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height)
+//     }
+//     return true
+//   }
 
   onDestroyEvent () {
     event.off(event.KEYDOWN, this.onKeyDown)

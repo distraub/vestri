@@ -1,6 +1,7 @@
 // a melonJS data manifest
 const DataManifest = [
-
+    { name: "player", type: "image", src: "data/img/player.png" },
+    { name: "chest", type: "image", src: "data/img/chest.png" },
     /* Bitmap Text */
     {
         name: "PressStart2P",

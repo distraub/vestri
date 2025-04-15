@@ -21,7 +21,7 @@ import {
     if (
       !video.init(1218, 562, {
         parent: 'screen',
-        scale: 'auto',
+        scale: 'fit',
         renderer: video.CANVAS
       })
       
