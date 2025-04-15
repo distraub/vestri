@@ -82,23 +82,23 @@ export default class PlayerEntity extends Sprite {
       dy += this.speed
     }
     
-    if (this.pos.x > 0 && this.pos.x < game.world.width - this.width) {
+    if (this.pos.x > 12 && this.pos.x < game.world.width) {
         this.pos.x += dx
     } else {
-        if (this.pos.x < game.world.width - 15) {
-            this.pos.x = this.pos.x + 1
+        if (this.pos.x < game.world.width) {
+            this.pos.x = this.pos.x + this.width / 2
         } else {
-            this.pos.x = game.world.width - 16
+            this.pos.x = game.world.width - 1
         }
     }
 
     if (this.pos.y > 0 && this.pos.y < game.world.height - 15) {
         this.pos.y += dy
     } else {
-        if (this.pos.y < game.world.height - 15) {
-            this.pos.y = this.pos.y + 1
+        if (this.pos.y < game.world.height + 12) {
+            this.pos.y = this.pos.y + this.height / 2
         } else {
-            this.pos.y = game.world.height - 16
+            this.pos.y = game.world.height - 20
         }
     }
     
