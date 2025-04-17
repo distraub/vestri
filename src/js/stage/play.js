@@ -91,7 +91,7 @@ class PlayScreen extends Stage {
     // game.world.addChild(new Chest(400, 100, { width: 50, height: 50, color: '#874621' }), 1)
 
     // Pull the player from the pool instead of game.world.pull
-    if (!device.isMobile) {
+    if (!device.isMobile && isLandscape) {
         const player = pool.pull('mainPlayer', (totalDistance / 2) + 12.5, 400, { width: 25, height: 25 })
         game.world.addChild(player, 2)
     }
