@@ -71,13 +71,15 @@ class ScoreScreen extends Stage {
                     bonusText = `You scored ${gameData.score} points`
                 }
             }
-            if (gameData.luck > 1) {
-                gameData.luck--
-                luckText = `Luck decreased by 1 to ${gameData.luck}`
-            }
-            if (gameData.multiplier > 1) {
-                gameData.multiplier--
-                multipliertext = `Multiplier decreased by 1 to ${gameData.multiplier}`
+            if (!gameData.gameOver) {
+                if (gameData.luck > 1) {
+                    gameData.luck--
+                    luckText = `Luck decreased by 1 to ${gameData.luck}`
+                }
+                if (gameData.multiplier > 1) {
+                    gameData.multiplier--
+                    multipliertext = `Multiplier decreased by 1 to ${gameData.multiplier}`
+                }
             }
         }
     }
