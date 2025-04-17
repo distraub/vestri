@@ -1,10 +1,17 @@
 import { Stage, game, ColorLayer, BitmapText, input, state } from 'melonjs'
+import gameData from '../gameData'
 
 class TitleScreen extends Stage {
   onResetEvent () {
     // Add a background layer at the lowest layer index.
     game.world.addChild(new ColorLayer('background', '#101020'), 0)
-    game.score = 0
+    gameData.score = 0
+    gameData.lives = 3
+    gameData.shield = 0
+    gameData.multiplier = 1
+    gameData.luck = 1
+    gameData.chests = 2
+    gameData.gameOver = false
 
     // Add title text (centered).
     game.world.addChild(
@@ -33,6 +40,10 @@ class TitleScreen extends Stage {
     // Bind the A key to a custom action "startGame".
     input.bindKey(input.KEY.SPACE, 'startGame', true)
     input.bindGamepad(0, {type:"buttons", code: input.GAMEPAD.BUTTONS.START}, input.KEY.SPACE)
+  }
+
+  onClick (event) {
+    console.log('click')
   }
 
   update (dt) {

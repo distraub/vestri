@@ -25,7 +25,12 @@ export default class Chest extends Sprite {
     this.body.ignoreGravity = true;
     const chestColor = new Color()
     chestColor.parseHex(gameData.chestColors[this.id])
+    // if (this.isLuckyChest) {
+    //   this.tint.setColor(255, 255, 255)
+    // } else {
     this.tint.setColor(chestColor.r, chestColor.g, chestColor.b)
+    // }
+    
 
     // this.tint.setColor(128, 255, 255);
 
@@ -39,15 +44,6 @@ export default class Chest extends Sprite {
   update (dt) {
     return super.update(dt)
   }
-
-//   draw (renderer) {
-//     const ctx = renderer.getContext()
-//     if (ctx) {
-//       // Use your gameData array or other method to choose a color.
-//       ctx.fillStyle = gameData.chestColors[this.id]
-//       ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height)
-//     }
-//   }
 
   onCollision (response, other) {
     if (other.body.collisionType === collision.types.PLAYER_OBJECT) {
