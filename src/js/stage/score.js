@@ -39,12 +39,12 @@ class ScoreScreen extends Stage {
                 gameData.luck += 1
                 luckText = `Extra lucky! Luck increased by 1 to ${gameData.luck}`
             } else {
-                luckText = `You are already very lucky! Luck stayed at max ${gameData.luck}`
+                luckText = `Luck stayed at max ${gameData.luck}`
             }
         } else {
             if (gameData.luck > 1) {
                 gameData.luck--
-                luckText = `It wasn't extra lucky. Luck decreased by 1 to ${gameData.luck}`
+                luckText = `Not extra lucky. Luck decreased by 1 to ${gameData.luck}`
             }
         }
         
@@ -68,7 +68,7 @@ class ScoreScreen extends Stage {
     } else {
         if (gameData.shield > 0) {
             gameData.shield--
-            bonusText = `Used a shield, but kept your chests and stats`
+            bonusText = `Shield used, kept chests`
         } else {
             if (gameData.chests > 2) {
                 gameData.chests--
@@ -108,7 +108,7 @@ class ScoreScreen extends Stage {
 
     // Add prompt text.
     game.world.addChild(
-      new BitmapText(game.viewport.width / 2, game.viewport.height / 2 - ultraTall ? 60 : 40, {
+      new BitmapText(game.viewport.width / 2, game.viewport.height / 2 - (ultraTall ? 10 : 40), {
         font: 'PressStart2P',
         size: ultraTall ? 1.7 : 1.0,
         textBaseline: 'middle',
@@ -118,43 +118,33 @@ class ScoreScreen extends Stage {
       1
     )
 
-    const shieldColor = new Color()
-    shieldColor.parseHex('#027df4')
-    const shieldRenderText = new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + ultraTall ? 70 : 50, {
+    const textArray = []
+
+    if (shieldText != '') {
+        textArray.push({text: shieldText, color: '#027df4'})
+    }
+    if (luckText != '') {
+        textArray.push({text: luckText, color: '#02f46a'})
+    }
+    if (multipliertext != '') {
+        textArray.push({text: multipliertext, color: '#c702f4'})
+    }
+
+    for (let i = 0; i < textArray.length; i++) {
+        const textColor = new Color()
+        textColor.parseHex(textArray[i].color)
+        const yStart = ultraTall ? 60 : 10
+        const yModifer = ultraTall ? 65 : 40
+        const textRender = new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + (yStart + (i * yModifer)), {
             font: 'PressStart2P',
-            size: ultraTall ? 1 : 0.6,
+            size: ultraTall ? 1.4 : 1.0,
             textBaseline: 'middle',
             textAlign: 'center',
-            text: shieldText
-        })
-    shieldRenderText.tint.setColor(shieldColor.r, shieldColor.g, shieldColor.b)
-    game.world.addChild(shieldRenderText, 1)
-
-    const luckColor = new Color()
-    luckColor.parseHex('#02f46a')
-    const luckRenderText = new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + ultraTall ? 100 : 80, {
-            font: 'PressStart2P',
-            size: ultraTall ? 1 : 0.6,
-            textBaseline: 'middle',
-            textAlign: 'center',
-            text: luckText
-        })
-    luckRenderText.tint.setColor(luckColor.r, luckColor.g, luckColor.b)
-    game.world.addChild(luckRenderText, 1)
-
-    
-
-    const multiplierColor = new Color()
-    multiplierColor.parseHex('#c702f4')
-    const multiplierRendertext = new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + ultraTall ? 130 : 110, {
-        font: 'PressStart2P',
-        size: ultraTall ? 1 : 0.6,
-        textBaseline: 'middle',
-        textAlign: 'center',
-        text: multipliertext
-      })
-    multiplierRendertext.tint.setColor(multiplierColor.r, multiplierColor.g, multiplierColor.b)
-    game.world.addChild(multiplierRendertext, 1)
+            text: textArray[i].text
+          })
+        textRender.tint.setColor(textColor.r, textColor.g, textColor.b)
+        game.world.addChild(textRender, 1)
+    }
 
     let startText = 'Press Space or Click to continue'
     if (device.isMobile) {
@@ -162,7 +152,7 @@ class ScoreScreen extends Stage {
     }
     // Add prompt text.
     game.world.addChild(
-        new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + ultraTall ? 180: 160, {
+        new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + (ultraTall ? 70 + (59 * textArray.length) : 20 + (40 * textArray.length)), {
           font: 'PressStart2P',
           size: ultraTall ? 1.1 : 0.8,
           textBaseline: 'middle',
