@@ -31,20 +31,20 @@ class ScoreScreen extends Stage {
         const shieldRoll = Math.floor(Math.random() * 100)
         if (shieldRoll > 70 - gameData.luck) {
             gameData.shield += 1
-            shieldText = `Shield increased by 1 to ${gameData.shield}`
+            shieldText = `Shield is now ${gameData.shield}`
         }
         
         if (luckRoll > 65 - (gameData.luck * gameData.multiplier)) {
             if (gameData.luck < 5) {
                 gameData.luck += 1
-                luckText = `Extra lucky! Luck increased by 1 to ${gameData.luck}`
+                luckText = `Extra lucky! Luck is now ${gameData.luck}`
             } else {
                 luckText = `Luck stayed at max ${gameData.luck}`
             }
         } else {
             if (gameData.luck > 1) {
                 gameData.luck--
-                luckText = `Not extra lucky. Luck decreased by 1 to ${gameData.luck}`
+                luckText = `Not extra lucky. Luck is now ${gameData.luck}`
             }
         }
         
@@ -61,7 +61,7 @@ class ScoreScreen extends Stage {
 
         if (multiplier > 0) {
             gameData.multiplier += multiplier
-            multipliertext = `Multiplier increased by ${multiplier} to ${gameData.multiplier}`
+            multipliertext = `Multiplier is now ${multiplier} to ${gameData.multiplier}`
         }
 
         gameData.foundLuckyChest = false
@@ -84,11 +84,11 @@ class ScoreScreen extends Stage {
             if (!gameData.gameOver) {
                 if (gameData.luck > 1) {
                     gameData.luck--
-                    luckText = `Luck decreased by 1 to ${gameData.luck}`
+                    luckText = `Luck is now ${gameData.luck}`
                 }
                 if (gameData.multiplier > 1) {
                     gameData.multiplier--
-                    multipliertext = `Multiplier decreased by 1 to ${gameData.multiplier}`
+                    multipliertext = `Multiplier is now ${gameData.multiplier}`
                 }
             }
         }
