@@ -1,4 +1,4 @@
-import { Stage, game, ColorLayer, BitmapText, input, state } from 'melonjs'
+import { Stage, game, ColorLayer, BitmapText, input, state, device } from 'melonjs'
 import gameData from '../gameData'
 import Clicker from '../renderables/clicker'
 
@@ -28,6 +28,10 @@ class TitleScreen extends Stage {
       1
     )
 
+    let startText = 'Press Space or Click to start'
+    if (device.isMobile) {
+        startText = 'Tap to start'
+    }
     // Add prompt text.
     game.world.addChild(
       new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + 40, {
@@ -35,7 +39,7 @@ class TitleScreen extends Stage {
         size: 1.0,
         textBaseline: 'middle',
         textAlign: 'center',
-        text: 'Press Space To Start'
+        text: startText
       }),
       1
     )

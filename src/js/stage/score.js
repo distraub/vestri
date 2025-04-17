@@ -1,4 +1,4 @@
-import { Stage, game, ColorLayer, BitmapText, input, state, save, Color} from 'melonjs'
+import { Stage, game, ColorLayer, BitmapText, input, state, save, Color, device} from 'melonjs'
 import gameData from '../gameData.js'
 import Clicker from '../renderables/clicker'
 
@@ -144,6 +144,10 @@ class ScoreScreen extends Stage {
     multiplierRendertext.tint.setColor(multiplierColor.r, multiplierColor.g, multiplierColor.b)
     game.world.addChild(multiplierRendertext, 1)
 
+    let startText = 'Press Space or Click to continue'
+    if (device.isMobile) {
+        startText = 'Tap to continue'
+    }
     // Add prompt text.
     game.world.addChild(
         new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + 160, {
@@ -151,7 +155,7 @@ class ScoreScreen extends Stage {
           size: 0.8,
           textBaseline: 'middle',
           textAlign: 'center',
-          text: 'Press Space to continue'
+          text: startText
         }),
         1
       )
