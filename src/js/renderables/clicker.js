@@ -43,7 +43,11 @@ export default class Clicker extends Sprite {
       return false
     }
     if (state.isCurrent(state.SCORE)) {
-      state.change(state.PLAY)
+      if (gameData.gameOver) {
+            state.change(state.MENU)
+        } else {
+            state.change(state.PLAY)
+        }
       return false
     }
     // Returning false stops propagation (optional)
