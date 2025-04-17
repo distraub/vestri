@@ -28,12 +28,12 @@ class ScoreScreen extends Stage {
         const luckRoll = Math.floor(Math.random() * 100)
         const multiplierRoll = Math.floor(Math.random() * 100)
         const shieldRoll = Math.floor(Math.random() * 100)
-        if (shieldRoll > 90 - gameData.luck) {
+        if (shieldRoll > 70 - gameData.luck) {
             gameData.shield += 1
             shieldText = `Shield increased by 1 to ${gameData.shield}`
         }
         if (gameData.luck < 5) {
-            if (luckRoll > 85 - (gameData.luck * gameData.multiplier)) {
+            if (luckRoll > 65 - (gameData.luck * gameData.multiplier)) {
                 gameData.luck += 1
                 luckText = `Luck increased by 1 to ${gameData.luck}`
             } else {
