@@ -57,11 +57,6 @@ class ScoreScreen extends Stage {
         if (multiplier > 0) {
             gameData.multiplier += multiplier
             multipliertext = `Multiplier increased by ${multiplier} to ${gameData.multiplier}`
-        } else {
-            if (gameData.multiplier > 1) {
-                gameData.multiplier--
-                multipliertext = `Multiplier decreased by 1 to ${gameData.multiplier}`
-            }
         }
 
         gameData.foundLuckyChest = false
