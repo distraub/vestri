@@ -74,21 +74,24 @@ class PlayScreen extends Stage {
     game.world.addChild(new ColorLayer('background', '#101020'), 0)
 
     const luckyChest = Math.floor(Math.random() * gameData.chests)
-    const totalWidth = game.viewport.width
+    const totalDistance = device.isLandscape ? game.viewport.width : game.viewport.height
     const luckRadius = gameData.luck - 1
 
     for (let x = 0; x < gameData.chests; x++) {
         let isLuckyChest = x >= luckyChest - luckRadius && x <= luckyChest + luckRadius
         const chestSize = 50
-        const centerX = totalWidth * (x + 1) / (gameData.chests + 1)
-        const leftX = centerX - (chestSize / 2)
-        game.world.addChild(new Chest(centerX, 200, { width: chestSize, height: chestSize, id: `${x}`, isLuckyChest }), 1)
+        const chestCenter = totalDistance * (x + 1) / (gameData.chests + 1)
+        if (device.isLandscape) {
+            game.world.addChild(new Chest(chestCenter, 200, { width: chestSize, height: chestSize, id: `${x}`, isLuckyChest }), 1)
+        } else {
+            game.world.addChild(new Chest(totalDistance / 2, chestCenter, { width: chestSize, height: chestSize, id: `${x}`, isLuckyChest }), 1)
+        }
     }
     // game.world.addChild(new Chest(400, 100, { width: 50, height: 50, color: '#874621' }), 1)
 
     // Pull the player from the pool instead of game.world.pull
     if (!device.isMobile) {
-        const player = pool.pull('mainPlayer', (totalWidth / 2) + 12.5, 400, { width: 25, height: 25 })
+        const player = pool.pull('mainPlayer', (totalDistance / 2) + 12.5, 400, { width: 25, height: 25 })
         game.world.addChild(player, 2)
     }
   }
