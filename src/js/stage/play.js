@@ -74,7 +74,7 @@ class PlayScreen extends Stage {
     game.world.addChild(new ColorLayer('background', '#101020'), 0)
 
     const luckyChest = Math.floor(Math.random() * gameData.chests)
-    const isLandscape = viewport.width > viewport.height
+    const isLandscape = game.viewport.width > game.viewport.height
     const totalDistance = isLandscape ? game.viewport.width : game.viewport.height
     const luckRadius = gameData.luck - 1
 
