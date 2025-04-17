@@ -34,7 +34,7 @@ class ScoreScreen extends Stage {
             shieldText = `Shield is now ${gameData.shield}`
         }
         
-        if (luckRoll > 65 - (gameData.luck * gameData.multiplier)) {
+        if (luckRoll > 65 - (gameData.luck + gameData.multiplier)) {
             if (gameData.luck < 5) {
                 gameData.luck += 1
                 luckText = `Extra lucky! Luck is now ${gameData.luck}`
