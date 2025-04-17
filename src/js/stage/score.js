@@ -36,6 +36,11 @@ class ScoreScreen extends Stage {
             if (luckRoll > 85 - (gameData.luck * gameData.multiplier)) {
                 gameData.luck += 1
                 luckText = `Luck increased by 1 to ${gameData.luck}`
+            } else {
+                if (gameData.luck > 1) {
+                    gameData.luck--
+                    luckText = `Luck decreased by 1 to ${gameData.luck}`
+                }
             }
         }
         let multiplier = 0
@@ -52,6 +57,11 @@ class ScoreScreen extends Stage {
         if (multiplier > 0) {
             gameData.multiplier += multiplier
             multipliertext = `Multiplier increased by ${multiplier} to ${gameData.multiplier}`
+        } else {
+            if (gameData.multiplier > 1) {
+                gameData.multiplier--
+                multipliertext = `Multiplier decreased by 1 to ${gameData.multiplier}`
+            }
         }
 
         gameData.foundLuckyChest = false
