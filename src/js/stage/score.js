@@ -8,6 +8,7 @@ class ScoreScreen extends Stage {
     game.world.addChild(new ColorLayer('background', '#101020'), 0)
     game.world.addChild(new Clicker(0, 0, { width: game.viewport.width, height: game.viewport.height }), 0)
 
+    const ultraTall = game.viewport.height >= game.viewport.width * 1.6
     gameData.startRound = false
 
     let chestMessage = 'Sorry try again'
@@ -97,7 +98,7 @@ class ScoreScreen extends Stage {
     game.world.addChild(
       new BitmapText(game.viewport.width / 2, game.viewport.height / 2 - 100, {
         font: 'PressStart2P',
-        size: 2.0,
+        size: ultraTall ? 3.0 : 2.0,
         textBaseline: 'middle',
         textAlign: 'center',
         text: chestMessage
@@ -109,7 +110,7 @@ class ScoreScreen extends Stage {
     game.world.addChild(
       new BitmapText(game.viewport.width / 2, game.viewport.height / 2 - 40, {
         font: 'PressStart2P',
-        size: 1.0,
+        size: ultraTall ? 1.7 : 1.0,
         textBaseline: 'middle',
         textAlign: 'center',
         text: bonusText
@@ -121,7 +122,7 @@ class ScoreScreen extends Stage {
     shieldColor.parseHex('#027df4')
     const shieldRenderText = new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + 50, {
             font: 'PressStart2P',
-            size: 0.6,
+            size: ultraTall ? 1 : 0.6,
             textBaseline: 'middle',
             textAlign: 'center',
             text: shieldText
@@ -133,7 +134,7 @@ class ScoreScreen extends Stage {
     luckColor.parseHex('#02f46a')
     const luckRenderText = new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + 80, {
             font: 'PressStart2P',
-            size: 0.6,
+            size: ultraTall ? 1 : 0.6,
             textBaseline: 'middle',
             textAlign: 'center',
             text: luckText
@@ -147,7 +148,7 @@ class ScoreScreen extends Stage {
     multiplierColor.parseHex('#c702f4')
     const multiplierRendertext = new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + 110, {
         font: 'PressStart2P',
-        size: 0.6,
+        size: ultraTall ? 1 : 0.6,
         textBaseline: 'middle',
         textAlign: 'center',
         text: multipliertext
@@ -163,7 +164,7 @@ class ScoreScreen extends Stage {
     game.world.addChild(
         new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + 160, {
           font: 'PressStart2P',
-          size: 0.8,
+          size: ultraTall ? 1.1 : 0.8,
           textBaseline: 'middle',
           textAlign: 'center',
           text: startText

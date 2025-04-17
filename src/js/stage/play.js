@@ -6,6 +6,7 @@ import gameData from '../gameData.js'
 class PlayScreen extends Stage {
   onResetEvent () {
     game.world.gravity = { x:0, y:0 }
+    const ultraTall = game.viewport.height >= game.viewport.width * 1.2
 
     if (gameData.chests === undefined || gameData.chests == null) {
         gameData.chests = 2
@@ -14,7 +15,7 @@ class PlayScreen extends Stage {
     game.world.addChild(
         new BitmapText(game.viewport.width / 2 - 20, 20, {
           font: 'PressStart2P',
-          size: 0.8,
+          size: ultraTall ? 1.5 :0.8,
           textBaseline: 'top',
           textAlign: 'center',
           text: `Score: ${gameData.score}`
@@ -26,7 +27,7 @@ class PlayScreen extends Stage {
     luckColor.parseHex('#02f46a')
     const luckText = new BitmapText(20, 20, {
     font: 'PressStart2P',
-    size: 0.8,
+    size: ultraTall ? 1.5 :0.8,
     textBaseline: 'top',
     textAlign: 'left',
     text: `Luck: ${gameData.luck}`
@@ -38,7 +39,7 @@ class PlayScreen extends Stage {
     multiplierColor.parseHex('#c702f4')
     const multipliertext = new BitmapText(game.viewport.width - 20, 20, {
         font: 'PressStart2P',
-        size: 0.8,
+        size: ultraTall ? 1.5 :0.8,
         textBaseline: 'top',
         textAlign: 'right',
         text: `Multiplier: ${gameData.multiplier}`
@@ -50,7 +51,7 @@ class PlayScreen extends Stage {
     livesColor.parseHex('#f4dc02')
     const livesText = new BitmapText(20, game.viewport.height - 20, {
         font: 'PressStart2P',
-        size: 0.8,
+        size: ultraTall ? 1.5 :0.8,
         textBaseline: 'bottom',
         textAlign: 'left',
         text: `Lives: ${gameData.lives}`
@@ -62,7 +63,7 @@ class PlayScreen extends Stage {
     shieldColor.parseHex('#027df4')
     const shieldText = new BitmapText(game.viewport.width - 20, game.viewport.height - 20, {
         font: 'PressStart2P',
-        size: 0.8,
+        size: ultraTall ? 1.5 :0.8,
         textBaseline: 'bottom',
         textAlign: 'right',
         text: `Shield: ${gameData.shield}`
@@ -80,7 +81,7 @@ class PlayScreen extends Stage {
 
     for (let x = 0; x < gameData.chests; x++) {
         let isLuckyChest = x >= luckyChest - luckRadius && x <= luckyChest + luckRadius
-        const chestSize = 50
+        const chestSize = ultraTall ? 100 : 50
         const chestCenter = totalDistance * (x + 1) / (gameData.chests + 1)
         if (isLandscape) {
             game.world.addChild(new Chest(chestCenter, 200, { width: chestSize, height: chestSize, id: `${x}`, isLuckyChest }), 1)

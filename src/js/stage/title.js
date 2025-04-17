@@ -16,11 +16,13 @@ class TitleScreen extends Stage {
 
    game.world.addChild(new Clicker(0, 0, { width: game.viewport.width, height: game.viewport.height }), 0)
 
+   const ultraTall = game.viewport.height >= game.viewport.width * 1.3
+   // Add a title background image.
     // Add title text (centered).
     game.world.addChild(
       new BitmapText(game.viewport.width / 2, game.viewport.height / 2 - 20, {
         font: 'PressStart2P',
-        size: 3.0,
+        size: ultraTall ? 5 : 3.0,
         textBaseline: 'middle',
         textAlign: 'center',
         text: 'Vestri'
@@ -34,9 +36,9 @@ class TitleScreen extends Stage {
     }
     // Add prompt text.
     game.world.addChild(
-      new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + 40, {
+      new BitmapText(game.viewport.width / 2, game.viewport.height / 2 + (ultraTall ? 80: 40), {
         font: 'PressStart2P',
-        size: 1.0,
+        size: ultraTall ? 1.8 : 1.0,
         textBaseline: 'middle',
         textAlign: 'center',
         text: startText
