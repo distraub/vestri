@@ -6,7 +6,7 @@ import gameData from '../gameData.js'
 class PlayScreen extends Stage {
   onResetEvent () {
     game.world.gravity = { x:0, y:0 }
-    const ultraTall = game.viewport.height >= game.viewport.width * 1.2
+    const ultraTall = game.viewport.height >= game.viewport.width * 1.5
 
     if (gameData.chests === undefined || gameData.chests == null) {
         gameData.chests = 2

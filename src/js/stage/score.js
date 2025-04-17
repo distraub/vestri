@@ -8,7 +8,7 @@ class ScoreScreen extends Stage {
     game.world.addChild(new ColorLayer('background', '#101020'), 0)
     game.world.addChild(new Clicker(0, 0, { width: game.viewport.width, height: game.viewport.height }), 0)
 
-    const ultraTall = game.viewport.height >= game.viewport.width * 1.6
+    const ultraTall = game.viewport.height >= game.viewport.width * 1.5
     gameData.startRound = false
 
     let chestMessage = 'Sorry try again'

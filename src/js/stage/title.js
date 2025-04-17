@@ -16,7 +16,7 @@ class TitleScreen extends Stage {
 
    game.world.addChild(new Clicker(0, 0, { width: game.viewport.width, height: game.viewport.height }), 0)
 
-   const ultraTall = game.viewport.height >= game.viewport.width * 1.3
+   const ultraTall = game.viewport.height >= game.viewport.width * 1.5
    // Add a title background image.
     // Add title text (centered).
     game.world.addChild(
