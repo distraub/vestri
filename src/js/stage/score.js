@@ -35,11 +35,11 @@ class ScoreScreen extends Stage {
         if (gameData.luck < 5) {
             if (luckRoll > 65 - (gameData.luck * gameData.multiplier)) {
                 gameData.luck += 1
-                luckText = `Luck increased by 1 to ${gameData.luck}`
+                luckText = `Extra lucky! Luck increased by 1 to ${gameData.luck}`
             } else {
                 if (gameData.luck > 1) {
                     gameData.luck--
-                    luckText = `Luck decreased by 1 to ${gameData.luck}`
+                    luckText = `It wasn't extra lucky. Luck decreased by 1 to ${gameData.luck}`
                 }
             }
         }
