@@ -32,17 +32,21 @@ class ScoreScreen extends Stage {
             gameData.shield += 1
             shieldText = `Shield increased by 1 to ${gameData.shield}`
         }
-        if (gameData.luck < 5) {
-            if (luckRoll > 65 - (gameData.luck * gameData.multiplier)) {
+        
+        if (luckRoll > 65 - (gameData.luck * gameData.multiplier)) {
+            if (gameData.luck < 5) {
                 gameData.luck += 1
                 luckText = `Extra lucky! Luck increased by 1 to ${gameData.luck}`
             } else {
-                if (gameData.luck > 1) {
-                    gameData.luck--
-                    luckText = `It wasn't extra lucky. Luck decreased by 1 to ${gameData.luck}`
-                }
+                luckText = `You are already very lucky! Luck stayed at max ${gameData.luck}`
+            }
+        } else {
+            if (gameData.luck > 1) {
+                gameData.luck--
+                luckText = `It wasn't extra lucky. Luck decreased by 1 to ${gameData.luck}`
             }
         }
+        
         let multiplier = 0
         if (multiplierRoll > 80 - gameData.luck) {
             multiplier = 1
