@@ -85,7 +85,7 @@ class PlayScreen extends Stage {
         if (isLandscape) {
             game.world.addChild(new Chest(chestCenter, 200, { width: chestSize, height: chestSize, id: `${x}`, isLuckyChest }), 1)
         } else {
-            game.world.addChild(new Chest(game.viewport.width / 2 - (chestSize / 2), chestCenter, { width: chestSize, height: chestSize, id: `${x}`, isLuckyChest }), 1)
+            game.world.addChild(new Chest(game.viewport.width / 2, chestCenter, { width: chestSize, height: chestSize, id: `${x}`, isLuckyChest }), 1)
         }
     }
     // game.world.addChild(new Chest(400, 100, { width: 50, height: 50, color: '#874621' }), 1)
