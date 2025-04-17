@@ -1,5 +1,6 @@
 import { Stage, game, ColorLayer, BitmapText, input, state } from 'melonjs'
 import gameData from '../gameData'
+import Clicker from '../renderables/clicker'
 
 class TitleScreen extends Stage {
   onResetEvent () {
@@ -12,6 +13,8 @@ class TitleScreen extends Stage {
     gameData.luck = 1
     gameData.chests = 2
     gameData.gameOver = false
+
+   game.world.addChild(new Clicker(0, 0, { width: game.viewport.width, height: game.viewport.height }), 0)
 
     // Add title text (centered).
     game.world.addChild(

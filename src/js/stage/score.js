@@ -1,10 +1,12 @@
 import { Stage, game, ColorLayer, BitmapText, input, state, save, Color} from 'melonjs'
 import gameData from '../gameData.js'
+import Clicker from '../renderables/clicker'
 
 class ScoreScreen extends Stage {
   onResetEvent () {
     // Add a background layer at the lowest layer index.
     game.world.addChild(new ColorLayer('background', '#101020'), 0)
+    game.world.addChild(new Clicker(0, 0, { width: game.viewport.width, height: game.viewport.height }), 0)
 
     gameData.startRound = false
 
@@ -66,7 +68,7 @@ class ScoreScreen extends Stage {
                 } else {
                     gameData.gameOver = true
                     chestMessage = 'Game Over'
-                    bonusText = 'No more lives left'
+                    bonusText = `You scored ${gameData.score} points`
                 }
             }
             if (gameData.luck > 1) {
