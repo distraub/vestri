@@ -49,7 +49,7 @@ class PlayScreen extends Stage {
 
     const livesColor = new Color()
     livesColor.parseHex('#f4dc02')
-    const livesText = new BitmapText(20, game.viewport.height - 20, {
+    const livesText = new BitmapText(20, game.viewport.height - (ultraTall ? 50 : 20), {
         font: 'PressStart2P',
         size: ultraTall ? 1.5 :0.8,
         textBaseline: 'bottom',
@@ -61,7 +61,7 @@ class PlayScreen extends Stage {
 
     const shieldColor = new Color()
     shieldColor.parseHex('#027df4')
-    const shieldText = new BitmapText(game.viewport.width - 20, game.viewport.height - 20, {
+    const shieldText = new BitmapText(game.viewport.width - 20, game.viewport.height - (ultraTall ? 50 : 20), {
         font: 'PressStart2P',
         size: ultraTall ? 1.5 :0.8,
         textBaseline: 'bottom',
