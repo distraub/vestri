@@ -71,6 +71,17 @@ class PlayScreen extends Stage {
     shieldText.tint.setColor(shieldColor.r, shieldColor.g, shieldColor.b)
     game.world.addChild(shieldText, 1)
 
+    game.world.addChild(
+        new BitmapText(game.viewport.width / 2, game.viewport.height - (ultraTall ? 100 : 20), {
+            font: 'PressStart2P',
+            size: ultraTall ? 1.5 :0.8,
+            textBaseline: 'bottom',
+            textAlign: 'center',
+            text: `HiScore: ${gameData.highScore}`
+        }),
+        1
+      )
+
     // Add a background layer
     game.world.addChild(new ColorLayer('background', '#101020'), 0)
 

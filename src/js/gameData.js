@@ -5,7 +5,12 @@ const gameData =  {
     multiplier: 1,
     shield: 0,
     lives: 3,
-    gameOver: false
+    gameOver: false,
+    highScore: 0,
+    addLuck: 0,
+    addMultiplier: 0,
+    addShield: 0,
+    addLives: 0
 }
 
 export default gameData

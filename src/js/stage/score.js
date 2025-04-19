@@ -78,7 +78,12 @@ class ScoreScreen extends Stage {
                 } else {
                     gameData.gameOver = true
                     chestMessage = 'Game Over'
-                    bonusText = `You scored ${gameData.score} points`
+                    if (gameData.score > gameData.highScore) {
+                        gameData.highScore = gameData.score
+                        bonusText = `New High Score! ${gameData.score} points`
+                    } else {
+                        bonusText = `You scored ${gameData.score} points`
+                    }
                 }
             }
             if (!gameData.gameOver) {
