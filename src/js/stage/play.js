@@ -72,7 +72,7 @@ class PlayScreen extends Stage {
     game.world.addChild(shieldText, 1)
 
     game.world.addChild(
-        new BitmapText(game.viewport.width / 2, game.viewport.height - (ultraTall ? 100 : 20), {
+        new BitmapText(game.viewport.width / 2, game.viewport.height - (ultraTall ? 180 : 20), {
             font: 'PressStart2P',
             size: ultraTall ? 1.5 :0.8,
             textBaseline: 'bottom',

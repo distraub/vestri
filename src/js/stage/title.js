@@ -7,10 +7,10 @@ class TitleScreen extends Stage {
     // Add a background layer at the lowest layer index.
     game.world.addChild(new ColorLayer('background', '#101020'), 0)
     gameData.score = 0
-    gameData.lives = 3
-    gameData.shield = 0
-    gameData.multiplier = 1
-    gameData.luck = 1
+    gameData.lives = 3 + gameData.addLives
+    gameData.shield = 0 + gameData.addShield
+    gameData.multiplier = 1 + gameData.addMultiplier
+    gameData.luck = 1 + gameData.addLuck
     gameData.chests = 2
     gameData.gameOver = false
 

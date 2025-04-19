@@ -16,6 +16,8 @@ class ScoreScreen extends Stage {
     let luckText = ''
     let multipliertext = ''
     let shieldText = ''
+    let livesText = ''
+    const textArray = []
 
     if (gameData.foundLuckyChest) {
         const scoreAdd = gameData.chests * 100
@@ -81,6 +83,21 @@ class ScoreScreen extends Stage {
                     if (gameData.score > gameData.highScore) {
                         gameData.highScore = gameData.score
                         bonusText = `New High Score! ${gameData.score} points`
+                        const bonusIncentive = Math.floor(Math.random() * 4)
+                        if (bonusIncentive === 0) {
+                            gameData.addLuck++
+                            luckText = `Start with extra luck! Luck: ${gameData.addLuck}`
+                        } else if (bonusIncentive === 1) {
+                            gameData.addMultiplier++
+                            multipliertext = `Start with extra multiplier! Multiplier: ${gameData.addMultiplier}`
+                        } else if (bonusIncentive === 2) {
+                            gameData.addShield++
+                            shieldText = `Start with an extra shield! Shield: ${gameData.addShield}`
+                        } else {
+                            gameData.addLives++
+                            livesText = `Start with an extra life! Life: ${3 + gameData.addLives}`
+                            textArray.push({text: livesText, color: '#f4dc02'})
+                        }
                     } else {
                         bonusText = `You scored ${gameData.score} points`
                     }
@@ -123,8 +140,6 @@ class ScoreScreen extends Stage {
       1
     )
 
-    const textArray = []
-
     if (shieldText != '') {
         textArray.push({text: shieldText, color: '#027df4'})
     }
@@ -151,9 +166,9 @@ class ScoreScreen extends Stage {
         game.world.addChild(textRender, 1)
     }
 
-    let startText = 'Press Space or Click to continue'
+    let startText = 'Press Space or Click to start a new game'
     if (device.isMobile) {
-        startText = 'Tap to continue'
+        startText = 'Tap to start a new game'
     }
     // Add prompt text.
     game.world.addChild(
