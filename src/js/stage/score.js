@@ -33,20 +33,20 @@ class ScoreScreen extends Stage {
         const shieldRoll = Math.floor(Math.random() * 100)
         if (shieldRoll > 70 - gameData.luck) {
             gameData.shield += 1
-            shieldText = `Shield is now ${gameData.shield}`
+            shieldText = 'Shield +1'
         }
         
         if (luckRoll > 65 - (gameData.luck + gameData.multiplier)) {
             if (gameData.luck < 5) {
                 gameData.luck += 1
-                luckText = `Extra lucky! Luck is now ${gameData.luck}`
+                luckText = 'Extra lucky! +1 Luck'
             } else {
                 luckText = `Luck stayed at max ${gameData.luck}`
             }
         } else {
             if (gameData.luck > 1) {
                 gameData.luck--
-                luckText = `Not extra lucky. Luck is now ${gameData.luck}`
+                luckText = 'Not extra lucky. -1 Luck'
             }
         }
         
@@ -63,7 +63,7 @@ class ScoreScreen extends Stage {
 
         if (multiplier > 0) {
             gameData.multiplier += multiplier
-            multipliertext = `Multiplier is now ${multiplier} to ${gameData.multiplier}`
+            multipliertext = `+${multiplier} Multiplier}`
         }
 
         gameData.foundLuckyChest = false
@@ -86,16 +86,16 @@ class ScoreScreen extends Stage {
                         const bonusIncentive = Math.floor(Math.random() * 4)
                         if (bonusIncentive === 0) {
                             gameData.addLuck++
-                            luckText = `Start with extra luck! Luck: ${gameData.addLuck}`
+                            luckText = `Start with extra luck!`
                         } else if (bonusIncentive === 1) {
                             gameData.addMultiplier++
-                            multipliertext = `Start with extra multiplier! Multiplier: ${gameData.addMultiplier}`
+                            multipliertext = `Start with extra multiplier!`
                         } else if (bonusIncentive === 2) {
                             gameData.addShield++
-                            shieldText = `Start with an extra shield! Shield: ${gameData.addShield}`
+                            shieldText = `Start with an extra shield!`
                         } else {
                             gameData.addLives++
-                            livesText = `Start with an extra life! Life: ${3 + gameData.addLives}`
+                            livesText = `Start with an extra life!`
                             textArray.push({text: livesText, color: '#f4dc02'})
                         }
                     } else {
@@ -106,11 +106,11 @@ class ScoreScreen extends Stage {
             if (!gameData.gameOver) {
                 if (gameData.luck > 1) {
                     gameData.luck--
-                    luckText = `Luck is now ${gameData.luck}`
+                    luckText = `- 1 Luck`
                 }
                 if (gameData.multiplier > 1) {
                     gameData.multiplier--
-                    multipliertext = `Multiplier is now ${gameData.multiplier}`
+                    multipliertext = `-1 Multiplier`
                 }
             }
         }
@@ -166,9 +166,13 @@ class ScoreScreen extends Stage {
         game.world.addChild(textRender, 1)
     }
 
-    let startText = 'Press Space or Click to start a new game'
+    let startTarget = 'continue'
+    if (gameData.gameOver) {
+        startTarget = 'start a new game'
+    }
+    let startText = `Press Space or Click to ${startTarget}`
     if (device.isMobile) {
-        startText = 'Tap to start a new game'
+        startText = `Tap to ${startTarget}`
     }
     // Add prompt text.
     game.world.addChild(
