@@ -49,7 +49,7 @@ class PlayScreen extends Stage {
 
     const livesColor = new Color()
     livesColor.parseHex('#f4dc02')
-    const livesText = new BitmapText(ultraTall && device.isFullscreen() ? 80 : 20, game.viewport.height -  20, {
+    const livesText = new BitmapText(20, game.viewport.height - (ultraTall ? 100 : 20), {
         font: 'PressStart2P',
         size: ultraTall ? 1.5 :0.8,
         textBaseline: 'bottom',
@@ -61,7 +61,7 @@ class PlayScreen extends Stage {
 
     const shieldColor = new Color()
     shieldColor.parseHex('#027df4')
-    const shieldText = new BitmapText(game.viewport.width - (ultraTall && device.isFullscreen() ? 80 : 20), game.viewport.height - 20, {
+    const shieldText = new BitmapText(game.viewport.width - 20, game.viewport.height - (ultraTall ? 100 : 20), {
         font: 'PressStart2P',
         size: ultraTall ? 1.5 :0.8,
         textBaseline: 'bottom',
@@ -72,7 +72,7 @@ class PlayScreen extends Stage {
     game.world.addChild(shieldText, 1)
 
     game.world.addChild(
-        new BitmapText(game.viewport.width / 2, game.viewport.height - (ultraTall ? 80 : 20), {
+        new BitmapText(game.viewport.width / 2, game.viewport.height - (ultraTall ? 180 : 20), {
             font: 'PressStart2P',
             size: ultraTall ? 1.5 :0.8,
             textBaseline: 'bottom',
@@ -87,7 +87,7 @@ class PlayScreen extends Stage {
 
     const luckyChest = Math.floor(Math.random() * gameData.chests)
     const isLandscape = game.viewport.width > game.viewport.height
-    const totalDistance = isLandscape ? game.viewport.width : game.viewport.height
+    const totalDistance = isLandscape ? game.viewport.width : (ultraTall ? game.viewport.height - 100 : game.viewport.height)
     const luckRadius = gameData.luck - 1
 
     for (let x = 0; x < gameData.chests; x++) {
