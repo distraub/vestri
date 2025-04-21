@@ -25,11 +25,11 @@ export default class Chest extends Sprite {
     this.body.ignoreGravity = true;
     const chestColor = new Color()
     chestColor.parseHex(gameData.chestColors[this.id])
-    if (this.isLuckyChest) {
-      this.tint.setColor(255, 255, 255)
-    } else {
+    // if (this.isLuckyChest) {
+    //   this.tint.setColor(255, 255, 255)
+    // } else {
     this.tint.setColor(chestColor.r, chestColor.g, chestColor.b)
-    }
+    // }
     
 
     // this.tint.setColor(128, 255, 255);
