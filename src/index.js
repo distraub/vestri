@@ -18,9 +18,6 @@ import {
   
   device.onReady(function () {
     // Force Canvas mode so native drawing methods (like fillRect) work
-    if (device.hasFullscreenSupport) {
-        device.requestFullscreen()
-    }
     if (
       !video.init(1218, 562, {
         parent: 'screen',
@@ -33,8 +30,6 @@ import {
       alert('Your browser does not support HTML5 canvas')
       return
     }
-
-    
   
     if (process.env.NODE_ENV === 'development') {
       import('@melonjs/debug-plugin').then(debugPlugin => {
@@ -49,6 +44,10 @@ import {
   
     audio.init('mp3,ogg')
     loader.setOptions({ crossOrigin: 'anonymous' })
+
+    if (device.hasFullscreenSupport) {
+        device.requestFullscreen()
+    }
   
     // Bind arrow keys if needed (for your player later)
     input.bindKey(input.KEY.LEFT, 'left', true)
