@@ -6,9 +6,6 @@ import gameData from '../gameData.js'
 class PlayScreen extends Stage {
   onResetEvent () {
     game.world.gravity = { x:0, y:0 }
-    if (device.hasFullscreenSupport) {
-        device.requestFullscreen()
-    }
     const ultraTall = game.viewport.height >= game.viewport.width * 1.5
 
     if (gameData.chests === undefined || gameData.chests == null) {
