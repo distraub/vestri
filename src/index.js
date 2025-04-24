@@ -44,10 +44,6 @@ import {
   
     audio.init('mp3,ogg')
     loader.setOptions({ crossOrigin: 'anonymous' })
-
-    if (device.hasFullscreenSupport) {
-        device.requestFullscreen()
-    }
   
     // Bind arrow keys if needed (for your player later)
     input.bindKey(input.KEY.LEFT, 'left', true)
