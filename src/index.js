@@ -18,6 +18,9 @@ import {
   
   device.onReady(function () {
     // Force Canvas mode so native drawing methods (like fillRect) work
+    if (device.hasFullscreenSupport) {
+        device.requestFullscreen()
+    }
     if (
       !video.init(1218, 562, {
         parent: 'screen',

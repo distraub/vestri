@@ -14,11 +14,7 @@ class TitleScreen extends Stage {
     gameData.chests = 2
     gameData.gameOver = false
 
-   game.world.addChild(new Clicker(0, 0, { width: game.viewport.width, height: game.viewport.height }), 0)
-
-   if (device.hasFullscreenSupport) {
-        device.requestFullscreen()
-    }
+   game.world.addChild(new Clicker(0, 0, { width: game.viewport.width, height: game.viewport.height }), 0)   
    const ultraTall = game.viewport.height >= game.viewport.width * 1.5
    
    // Add a title background image.
