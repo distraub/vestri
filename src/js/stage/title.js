@@ -4,9 +4,6 @@ import Clicker from '../renderables/clicker'
 
 class TitleScreen extends Stage {
   onResetEvent () {
-    if (device.hasFullscreenSupport) {
-        device.requestFullscreen()
-    }
     // Add a background layer at the lowest layer index.
     game.world.addChild(new ColorLayer('background', '#101020'), 0)
     gameData.score = 0
@@ -19,7 +16,11 @@ class TitleScreen extends Stage {
 
    game.world.addChild(new Clicker(0, 0, { width: game.viewport.width, height: game.viewport.height }), 0)
 
+   if (device.hasFullscreenSupport) {
+        device.requestFullscreen()
+    }
    const ultraTall = game.viewport.height >= game.viewport.width * 1.5
+   
    // Add a title background image.
     // Add title text (centered).
     game.world.addChild(
